@@ -15,7 +15,6 @@ async function controlSpotify(command) {
 }
 
 document.getElementById('play').addEventListener('click', () => controlSpotify('play'));
-document.getElementById('pause').addEventListener('click', () => controlSpotify('pause'));
 document.getElementById('next').addEventListener('click', () => controlSpotify('next'));
 document.getElementById('prev').addEventListener('click', () => controlSpotify('previous'));
 
