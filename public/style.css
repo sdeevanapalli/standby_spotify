@@ -1,11 +1,11 @@
-/* Subtle retro font */
-@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap');
+/* Spotify-like font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 body {
     margin: 0;
-    font-family: 'Fira Mono', 'Courier New', monospace;
-    background: #000000;            /* full black */
-    color: #1ABC9C;                 /* teal text */
+    font-family: 'Montserrat', 'Arial', sans-serif; /* close to Spotify font */
+    background: #000000;           /* full black */
+    color: #1DB954;                /* Spotify green */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,9 +35,9 @@ body {
 
 #album-art {
     width: 90%;
-    max-width: 300px;                /* zoomed out */
+    max-width: 300px;
     border-radius: 15px;
-    box-shadow: 0 0 10px #1ABC9C33;  /* subtle teal glow */
+    box-shadow: 0 0 10px #1DB95433; /* subtle green glow */
     transition: transform 0.2s ease;
 }
 
@@ -66,7 +66,7 @@ body {
 #artist-name {
     font-size: 1rem;
     margin: 3px 0 0;
-    color: #1ABC9CAA; /* slightly dim teal */
+    color: #1DB954AA; /* slightly dim green */
 }
 
 /* Buttons */
@@ -82,18 +82,19 @@ button {
     min-width: 50px;           /* prevents shrinking too small */
     max-width: 80px;
     background: #111;          /* almost black */
-    color: #1ABC9C;            /* teal text */
-    border: 1.5px solid #1ABC9C44; /* subtle teal border */
+    color: #1DB954;            /* Spotify green text */
+    border: 1.5px solid #1DB95444; /* subtle border */
     font-size: 1.2rem;
     padding: 7px 10px;
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.15s ease;
+    font-family: 'Montserrat', 'Arial', sans-serif;
 }
 
 button:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 6px #1ABC9C33; /* subtle glow */
+    box-shadow: 0 0 6px #1DB95433; /* subtle glow */
 }
 
 /* Responsive for smaller screens */
