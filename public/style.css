@@ -1,0 +1,50 @@
+body {
+  background: black;
+  color: white;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: sans-serif;
+}
+
+#player {
+  text-align: center;
+}
+
+#album-art {
+  width: 80vw;
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+#track-info {
+  margin-top: 20px;
+}
+
+#track-name {
+  font-size: 2rem;
+}
+
+#artist-name {
+  font-size: 1.2rem;
+  color: #aaa;
+}
+
+#controls {
+  margin-top: 20px;
+}
+
+button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  margin: 0 10px;
+  cursor: pointer;
+}
+button:hover {
+  color: #1db954;
+}
