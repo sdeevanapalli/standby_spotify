@@ -1,12 +1,11 @@
-/* Import retro hacker font */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+/* Subtle retro font */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap');
 
-/* Body & Layout */
 body {
     margin: 0;
-    font-family: 'Press Start 2P', monospace;
+    font-family: 'Fira Mono', 'Courier New', monospace;
     background: #000000;            /* full black */
-    color: #00FF00;                 /* hacker green text */
+    color: #1ABC9C;                 /* teal text */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,14 +20,12 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 15px;                      /* smaller gap */
-    padding: 10px;                  /* reduced padding */
+    gap: 20px;
+    padding: 10px;
     max-width: 95%;
-    background: #000000;
-    border-radius: 15px;
 }
 
-/* Album Art Container */
+/* Album Art */
 #album-container {
     flex: 1 1 250px;
     display: flex;
@@ -38,71 +35,73 @@ body {
 
 #album-art {
     width: 90%;
-    max-width: 300px;               /* zoomed out */
-    border-radius: 20px;
-    box-shadow: 0 0 20px #00FF00, 0 0 40px #00FF0033; /* hacker glow */
-    transition: transform 0.3s ease;
+    max-width: 300px;                /* zoomed out */
+    border-radius: 15px;
+    box-shadow: 0 0 10px #1ABC9C33;  /* subtle teal glow */
+    transition: transform 0.2s ease;
 }
 
 #album-art:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
-/* Controls Container */
+/* Controls & Info */
 #controls-container {
-    flex: 1 1 180px;                /* smaller width */
+    flex: 1 1 180px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 15px;                       /* compact vertical gap */
+    gap: 15px;
 }
 
-/* Track Info */
 #track-info {
     text-align: left;
 }
 
 #track-name {
-    font-size: 2rem;                 /* smaller title */
+    font-size: 1.8rem;
     margin: 0;
 }
 
 #artist-name {
-    font-size: 1rem;                 /* smaller artist */
-    margin: 5px 0 0;
-    color: #00FF00AA;                /* slightly dim green */
+    font-size: 1rem;
+    margin: 3px 0 0;
+    color: #1ABC9CAA; /* slightly dim teal */
 }
 
 /* Buttons */
 #controls {
     display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: nowrap; /* keep all buttons in one row */
 }
 
 button {
-    background: #000000;             /* black background */
-    color: #00FF00;                  /* bright green text */
-    border: 2px solid #00FF00;
-    font-size: 1.3rem;               /* smaller font */
-    padding: 8px 12px;               /* smaller buttons */
-    border-radius: 5px;
+    flex: 1;                  /* equal width */
+    min-width: 50px;           /* prevents shrinking too small */
+    max-width: 80px;
+    background: #111;          /* almost black */
+    color: #1ABC9C;            /* teal text */
+    border: 1.5px solid #1ABC9C44; /* subtle teal border */
+    font-size: 1.2rem;
+    padding: 7px 10px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
 }
 
 button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 10px #00FF00;
+    transform: scale(1.05);
+    box-shadow: 0 0 6px #1ABC9C33; /* subtle glow */
 }
 
-/* Media Query: smaller devices */
+/* Responsive for smaller screens */
 @media (max-width: 800px) {
     #player {
         flex-direction: column;
-        padding: 10px;
-        gap: 10px;
+        gap: 12px;
+        padding: 8px;
     }
     #controls-container {
         width: 100%;
