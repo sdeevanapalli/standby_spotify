@@ -1,4 +1,4 @@
-/* General Reset & Body */
+/* General Body Reset */
 body {
   margin: 0;
   font-family: 'Helvetica Neue', sans-serif;
@@ -7,7 +7,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
   overflow: hidden;
 }
 
@@ -15,43 +16,47 @@ body {
 #player {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap; /* allow responsive shrink on small screens */
   align-items: center;
+  justify-content: center;
   background: #181818;
   border-radius: 30px;
   box-shadow: 0 20px 50px rgba(0,0,0,0.7);
-  width: 90vw;
+  width: 95%;
   max-width: 1200px;
-  height: 70vh;
+  min-height: 60vh;
   padding: 20px;
   gap: 40px;
 }
 
 /* Album Container */
 #album-container {
-  flex: 1;
+  flex: 1 1 250px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 #album-art {
-  width: 90%;
-  max-width: 500px;
+  width: 100%;
+  max-width: 450px;
   border-radius: 30px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.6);
   transition: transform 0.3s ease;
 }
+
 #album-art:hover {
   transform: scale(1.05);
 }
 
 /* Controls Container */
 #controls-container {
-  flex: 1;
+  flex: 1 1 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 50px;
+  gap: 30px;
+  min-width: 250px;
 }
 
 /* Track Info */
@@ -74,7 +79,8 @@ body {
 /* Controls Buttons */
 #controls {
   display: flex;
-  gap: 30px;
+  gap: 25px;
+  flex-wrap: wrap;
 }
 
 button {
@@ -89,6 +95,28 @@ button {
 }
 
 button:hover {
-  transform: scale(1.2);
+  transform: scale(1.15);
   background: #1ed760;
+}
+
+/* Media Query for smaller landscape phones */
+@media (max-width: 800px) {
+  #player {
+    flex-direction: column;
+    min-height: auto;
+    padding: 15px;
+  }
+  #controls-container {
+    width: 100%;
+    align-items: center;
+  }
+  #track-info {
+    text-align: center;
+  }
+  #controls {
+    justify-content: center;
+  }
+  #album-art {
+    max-width: 80%;
+  }
 }
