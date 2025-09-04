@@ -29,6 +29,19 @@ export default async function handler(req, res) {
   }
 
   // Control commands
+  if (action === 'volume') {
+    const value = req.query.value;
+    if (!value || isNaN(value)) {
+      return res.status(400).json({ error: 'Missing or invalid volume value' });
+    }
+    const endpoint = `https://api.spotify.com/v1/me/player/volume?volume_percent=${value}`;
+    await fetch(endpoint, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${access_token}` }
+    });
+    return res.status(200).json({ success: true });
+  }
+
   let method = 'POST';
   let endpoint = '';
   switch (action) {

@@ -27,3 +27,42 @@ document.getElementById('prev').addEventListener('click', () => controlSpotify('
 
 setInterval(getCurrentlyPlaying, 5000);
 getCurrentlyPlaying();
+
+// Volume control logic
+async function getCurrentVolume() {
+  // Get current playback state
+  const res = await fetch('/api/spotify?action=current');
+  const data = await res.json();
+  if (data && data.device && typeof data.device.volume_percent === 'number') {
+    return data.device.volume_percent;
+  }
+  if (data && data.device && typeof data.device.volume === 'number') {
+    return data.device.volume;
+  }
+  // fallback: try item.device.volume_percent
+  if (data && data.item && data.item.device && typeof data.item.device.volume_percent === 'number') {
+    return data.item.device.volume_percent;
+  }
+  return null;
+}
+
+async function setSpotifyVolume(newVolume) {
+  // Clamp volume between 0 and 100
+  const volume = Math.max(0, Math.min(100, newVolume));
+  await fetch(`/api/spotify?action=volume&value=${volume}`, { method: 'PUT' });
+  setTimeout(getCurrentlyPlaying, 500);
+}
+
+document.getElementById('volume-up').addEventListener('click', async () => {
+  const current = await getCurrentVolume();
+  if (current !== null) {
+    setSpotifyVolume(current + 10);
+  }
+});
+
+document.getElementById('volume-down').addEventListener('click', async () => {
+  const current = await getCurrentVolume();
+  if (current !== null) {
+    setSpotifyVolume(current - 10);
+  }
+});
