@@ -11,8 +11,13 @@ async function getCurrentlyPlaying() {
     document.getElementById('artist-name').textContent = data.item.artists.map(a => a.name).join(', ');
 
     albumArtEl.onload = () => {
-      const [r, g, b] = colorThief.getColor(albumArtEl); // dominant color
-      document.body.style.background = `linear-gradient(to bottom, rgba(${r},${g},${b},0.7), #000)`;
+      try {
+        const [r, g, b] = colorThief.getColor(albumArtEl); // dominant color
+        document.body.style.background = `linear-gradient(to bottom, rgba(${r},${g},${b},0.7), #000)`;
+      } catch (e) {
+        document.body.style.background = 'linear-gradient(to bottom, #222, #000)';
+        console.warn('Could not extract color from album art:', e);
+      }
     };
   }
 }
