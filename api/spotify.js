@@ -21,7 +21,7 @@ export default async function handler(req, res) {
   const action = req.query.action;
 
   if (action === 'current') {
-    const r = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
+    const r = await fetch('https://api.spotify.com/v1/me/player', {
       headers: { Authorization: `Bearer ${access_token}` }
     });
     const json = await r.json();
