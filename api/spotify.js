@@ -35,11 +35,17 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Missing or invalid volume value' });
     }
     const endpoint = `https://api.spotify.com/v1/me/player/volume?volume_percent=${value}`;
-    await fetch(endpoint, {
+    const spotifyRes = await fetch(endpoint, {
       method: 'PUT',
       headers: { Authorization: `Bearer ${access_token}` }
     });
-    return res.status(200).json({ success: true });
+    // Spotify returns 204 No Content on success, error JSON otherwise
+    if (spotifyRes.status === 204) {
+      return res.status(200).json({ success: true });
+    } else {
+      const error = await spotifyRes.json();
+      return res.status(spotifyRes.status).json({ success: false, error });
+    }
   }
 
   let method = 'POST';
