@@ -54,15 +54,23 @@ async function setSpotifyVolume(newVolume) {
 }
 
 document.getElementById('volume-up').addEventListener('click', async () => {
+  console.log('Volume Up button clicked');
   const current = await getCurrentVolume();
+  console.log('Current volume:', current);
   if (current !== null) {
     setSpotifyVolume(current + 10);
+  } else {
+    console.warn('Could not get current volume');
   }
 });
 
 document.getElementById('volume-down').addEventListener('click', async () => {
+  console.log('Volume Down button clicked');
   const current = await getCurrentVolume();
+  console.log('Current volume:', current);
   if (current !== null) {
     setSpotifyVolume(current - 10);
+  } else {
+    console.warn('Could not get current volume');
   }
 });
